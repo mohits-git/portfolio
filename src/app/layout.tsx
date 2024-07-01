@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter, IBM_Plex_Mono } from "next/font/google";
 import "./globals.css";
 import ModalProvider from "@/providers/modal";
+import AppBar from "@/components/global.tsx/app-bar";
 
 const inter = Inter({ subsets: ["latin"] });
 const ibmPlexMono = IBM_Plex_Mono({
@@ -23,7 +24,10 @@ export default function RootLayout({
     <html lang="en">
       <body className={ibmPlexMono.className}>
         <ModalProvider>
-          {children}
+          <AppBar />
+          <div className="pt-20">
+            {children}
+          </div>
         </ModalProvider>
       </body>
     </html>
