@@ -3,6 +3,7 @@ import { Inter, IBM_Plex_Mono } from "next/font/google";
 import "./globals.css";
 import ModalProvider from "@/providers/modal";
 import AppBar from "@/components/global/app-bar";
+import Terminal from "@/components/terminal";
 
 const inter = Inter({ subsets: ["latin"] });
 const ibmPlexMono = IBM_Plex_Mono({
@@ -28,6 +29,7 @@ export default function RootLayout({
           <div className="pt-20">
             {children}
           </div>
+          <Terminal />
         </ModalProvider>
       </body>
     </html>
