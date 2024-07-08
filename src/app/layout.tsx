@@ -26,7 +26,7 @@ export default function RootLayout({
       <body className={ibmPlexMono.className}>
         <ModalProvider>
           <AppBar />
-          <div className="pt-20">
+          <div className="py-20 h-screen">
             {children}
           </div>
           <Terminal />
