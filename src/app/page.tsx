@@ -3,36 +3,51 @@ import { motion } from "framer-motion";
 
 export default function Home() {
   return (
-    <div className="w-screen h-full flex flex-col justify-center items-center">
-      <motion.div
-        animate={{
-          y: ["100%", "0%"],
-        }}
-        transition={{
-          duration: 0.5,
-          easings: "easeIn",
-        }}
-        className="text-[10rem] font-[900]"
-      >
-        Mohit&apos;s Site
-      </motion.div>
-      <div
-        className="text-[10rem] font-[900]"
-      >
-        Mohit&apos;s Site
+    <div className="px-10 w-screen h-full flex flex-col justify-center items-center">
+      <div className="grid grid-cols-3 h-full">
+        <div className="col-span-2 h-full flex flex-col justify-center">
+          <motion.div
+            animate={{
+              y: ["100%", "0%"],
+            }}
+            transition={{
+              duration: 0.5,
+              easings: "easeIn",
+            }}
+            className="text-[10rem] font-[900]"
+          >
+            Mohit&apos;s Site
+          </motion.div>
+          <div
+            className="text-[10rem] font-[900]"
+          >
+            Mohit&apos;s Site
+          </div>
+          <motion.div
+            animate={{
+              y: ["-100%", "0%"],
+            }}
+            transition={{
+              duration: 0.5,
+              easings: "easeIn",
+            }}
+            className="text-[10rem] font-[900] m-0 p-0"
+          >
+            Mohit&apos;s Site
+          </motion.div>
+        </div>
+        <div className="col-span-1 flex items-center justify-center h-full w-full flex-col">
+          <h4 className="text-2xl font-semibold w-full">
+            Yo!!
+          </h4>
+          <p
+            className="text-wrap text-lg"
+          >
+            I&apos;m a full stack web developer, building with JavaScript (& TypeScript).
+            I try to build cool stuff and the things which I love or am curious about.
+          </p>
+        </div>
       </div>
-      <motion.div
-        animate={{
-          y: ["-100%", "0%"],
-        }}
-        transition={{
-          duration: 0.5,
-          easings: "easeIn",
-        }}
-        className="text-[10rem] font-[900] m-0 p-0"
-      >
-        Mohit&apos;s Site
-      </motion.div>
     </div>
   );
 }
