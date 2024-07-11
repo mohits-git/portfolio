@@ -12,14 +12,14 @@ export default function Home() {
             }}
             transition={{
               duration: 0.5,
-              easings: "easeIn",
+              easings: "easeOut",
             }}
-            className="text-[10rem] font-[900]"
+            className="text-[10rem] font-[900] p-0 m-0 leading-[9.75rem] mohit-khatri-hollow"
           >
             Mohit&apos;s Site
           </motion.div>
           <div
-            className="text-[10rem] font-[900]"
+            className="text-[10rem] font-[900] leading-[9.75rem] mohit-khatri"
           >
             Mohit&apos;s Site
           </div>
@@ -29,9 +29,9 @@ export default function Home() {
             }}
             transition={{
               duration: 0.5,
-              easings: "easeIn",
+              easings: "easeOut",
             }}
-            className="text-[10rem] font-[900] m-0 p-0"
+            className="text-[10rem] font-[900] m-0 p-0 leading-[9.75rem] mohit-khatri-hollow"
           >
             Mohit&apos;s Site
           </motion.div>

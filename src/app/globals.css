@@ -5,3 +5,12 @@
 body {
   @apply bg-black text-white
 }
+
+.mohit-khatri-hollow {
+  @apply text-transparent;
+  -webkit-text-stroke: 4px white;
+}
+
+.mohit-khatri {
+  -webkit-text-stroke: 2px white;
+}
