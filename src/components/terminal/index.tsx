@@ -8,7 +8,7 @@ type Props = {
 const Terminal: React.FC<Props> = () => {
   return (
     <div className="fixed bottom-2 left-0 w-full flex justify-center">
-      <div className="relative min-h-[65px] h-full max-w-5xl w-full py-2 px-1 md:px-2 flex flex-col space-y-1 border rounded-md underline-offset-4 decoration-gray-300">
+      <div className="mx-2 mr-8 relative min-h-[65px] h-full max-w-5xl w-full py-2 px-1 md:px-2 flex flex-col space-y-1 border rounded-md underline-offset-4 decoration-gray-300">
         <div className="absolute top-2 right-2">
           <SquareTerminal width={30} height={30} />
         </div>

@@ -8,7 +8,7 @@ import ActiveLink from "./active-link";
 const AppBar: React.FC = () => {
   return (
     <div className="fixed top-2 left-0 w-full flex justify-center">
-      <div className="max-w-7xl w-full py-3 px-3 md:px-6 flex justify-between items-center border rounded-md underline-offset-4 decoration-gray-300">
+      <div className="mx-2 max-w-7xl w-full py-3 px-3 md:px-6 flex justify-between items-center border rounded-md underline-offset-4 decoration-gray-300">
         <Link
           href={'/'}
           className={`w-10 h-10 md:w-12 md:h-12 relative rounded-full overflow-hidden`}
