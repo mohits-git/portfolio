@@ -4,13 +4,13 @@ import { motion } from "framer-motion";
 
 export default function Home() {
   return (
-    <div className="px-10 w-screen h-full flex flex-col justify-center items-center">
-      <div className="grid grid-cols-3 h-full">
-        <div className="col-span-2 h-full flex flex-col justify-center">
-          <div>
+    <div className="px-2 lg:px-6 xl:px-10 w-screen h-full flex flex-col items-center overflow-hidden">
+      <div className="grid grid-cols-12 lg:h-full space-y-10">
+        <div className="col-span-full lg:col-span-7 3xl:col-span-8 h-fit lg:h-full flex flex-col justify-center">
+          <div className="w-full text-center lg:text-left">
             <StaggeredText
               text="Welcome To"
-              className="text-[4rem] px-2 my-5"
+              className="text-[1.75rem] lg:text-[2rem] 3xl:text-[2.5rem] px-2 mb-2 2xl:mb-5"
             />
           </div>
           <motion.div
@@ -19,14 +19,14 @@ export default function Home() {
             }}
             transition={{
               duration: 0.5,
-              easings: "easeOut",
+              easings: "easeIn",
             }}
-            className="text-[10rem] font-[900] p-0 m-0 leading-[9.75rem] mohit-khatri-hollow"
+            className="mohit-khatri-hollow"
           >
             Mohit&apos;s Site
           </motion.div>
           <div
-            className="text-[10rem] font-[900] leading-[9.75rem] mohit-khatri"
+            className="mohit-khatri"
           >
             Mohit&apos;s Site
           </div>
@@ -36,19 +36,19 @@ export default function Home() {
             }}
             transition={{
               duration: 0.5,
-              easings: "easeOut",
+              easings: "easeIn",
             }}
-            className="text-[10rem] font-[900] m-0 p-0 leading-[9.75rem] mohit-khatri-hollow"
+            className="mohit-khatri-hollow"
           >
             Mohit&apos;s Site
           </motion.div>
         </div>
-        <div className="col-span-1 flex items-center justify-center h-full w-full flex-col">
-          <h4 className="text-2xl font-semibold w-full">
+        <div className="col-span-full lg:col-span-5 3xl:col-span-4 flex lg:items-center justify-center h-full w-full flex-col">
+          <h4 className="text-2xl lg:text-xl font-semibold w-full">
             Yo!!
           </h4>
           <p
-            className="text-wrap text-lg"
+            className="text-wrap  text-sm lg:text-base 3xl:text-lg"
           >
             <StaggeredText
               text={[
