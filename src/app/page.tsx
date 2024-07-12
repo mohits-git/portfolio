@@ -1,6 +1,8 @@
 'use client';
 import StaggeredText from "@/components/staggered-text";
+import { PAGES } from "@/constants/pages-links";
 import { motion } from "framer-motion";
+import Link from "next/link";
 
 export default function Home() {
   return (
@@ -59,6 +61,18 @@ export default function Home() {
               y={0}
             />
           </div>
+          <div className="flex flex-col space-y-3 w-full lg:pr-12">
+            {PAGES.slice(1).map((page, index) => (
+              <Link
+                key={index}
+                href={page.href}
+                className="border border-white px-6 py-3 rounded-lg text-lg"
+              >
+                {page.text}
+              </Link>
+            ))}
+          </div>
+
           <div className="flex items-center space-x-4">
           </div>
         </div>
