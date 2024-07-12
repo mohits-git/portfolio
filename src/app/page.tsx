@@ -46,7 +46,7 @@ export default function Home() {
             Mohit&apos;s Site
           </motion.div>
         </div>
-        <div className="col-span-full lg:col-span-5 flex flex-col lg:items-center justify-center h-full w-full pb-12">
+        <div className="col-span-full lg:col-span-5 flex flex-col lg:items-center justify-center h-full w-full pb-8">
           <h4 className="text-2xl lg:text-xl font-semibold w-full leading-6">
             Hi!
           </h4>
@@ -67,9 +67,17 @@ export default function Home() {
               <Link
                 key={index}
                 href={page.href}
-                className="border border-white px-6 py-3 rounded-lg text-lg"
+                className="border border-white px-6 py-3 rounded-lg text-lg flex items-center justify-between space-x-3"
               >
-                {page.text}
+                <span className="shrink-0">
+                  {page.text}
+                </span>
+                <StaggeredText
+                  className="text-gray-400 text-sm text-nowrap text-ellipsis overflow-hidden w-64"
+                  text={page.cmd}
+                  y={0}
+                  speed={0.05}
+                />
               </Link>
             ))}
           </div>

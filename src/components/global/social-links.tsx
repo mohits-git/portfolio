@@ -16,7 +16,7 @@ type Props = {
 
 const defaultAnimation = {
   start: {
-    y: "20%",
+    y: "10%",
     opacity: 0,
     scale: 0,
   },
@@ -32,16 +32,18 @@ const SocialLinks: React.FC<Props> = ({ className = "" }) => {
     <>
       <motion.div
         initial="start"
-        animate="end"
+        whileInView="end"
+        viewport={{
+          once: true,
+          amount: 0.5,
+        }}
         transition={{
           staggerChildren: 0.1,
+          duration: 0.15,
         }}
         className={cn(`flex justify-center items-center space-x-3`, className)}>
         <motion.div
           variants={defaultAnimation}
-          transition={{
-            duration: 0.2,
-          }}
         >
           <Link
             target="_blank"
@@ -53,9 +55,6 @@ const SocialLinks: React.FC<Props> = ({ className = "" }) => {
         </motion.div>
         <motion.div
           variants={defaultAnimation}
-          transition={{
-            duration: 0.2,
-          }}
         >
           <Link
             target="_blank"
@@ -67,9 +66,6 @@ const SocialLinks: React.FC<Props> = ({ className = "" }) => {
         </motion.div>
         <motion.div
           variants={defaultAnimation}
-          transition={{
-            duration: 0.2,
-          }}
         >
           <button
             onClick={() => {
@@ -96,9 +92,6 @@ const SocialLinks: React.FC<Props> = ({ className = "" }) => {
         </motion.div>
         <motion.div
           variants={defaultAnimation}
-          transition={{
-            duration: 0.2,
-          }}
         >
           <Link
             target="_blank"
@@ -108,12 +101,8 @@ const SocialLinks: React.FC<Props> = ({ className = "" }) => {
             <Linkedin width={20} height={20} />
           </Link>
         </motion.div>
-
         <motion.div
           variants={defaultAnimation}
-          transition={{
-            duration: 0.2,
-          }}
         >
           <Link
             target="_blank"

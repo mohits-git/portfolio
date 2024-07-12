@@ -13,7 +13,7 @@ const Terminal: React.FC<Props> = () => {
           <SquareTerminal width={30} height={30} />
         </div>
 
-        <p className="text-gray-500 px-0.5 text-sm lg:text-base">run &apos;help&apos; to get information about the commands</p>
+        <p className="text-gray-500 px-0.5 text-xs md:text-sm lg:text-base">run &apos;help&apos; to get information about the commands</p>
 
         <div className="relative flex items-center w-full">
           <ChevronRight width={20} height={20} />
