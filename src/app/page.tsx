@@ -1,4 +1,5 @@
 'use client';
+import SocialLinks from "@/components/global/social-links";
 import StaggeredText from "@/components/staggered-text";
 import { PAGES } from "@/constants/pages-links";
 import { motion } from "framer-motion";
@@ -50,7 +51,7 @@ export default function Home() {
             Hi!
           </h4>
           <div
-            className="text-wrap text-sm lg:text-base py-3"
+            className="text-wrap text-sm lg:text-base pt-3 pb-5"
           >
             <StaggeredText
               text={[
@@ -73,8 +74,7 @@ export default function Home() {
             ))}
           </div>
 
-          <div className="flex items-center space-x-4">
-          </div>
+          <SocialLinks className="w-full my-6 lg:mr-12" />
         </div>
 
       </div>
