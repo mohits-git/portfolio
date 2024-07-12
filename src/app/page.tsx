@@ -6,7 +6,7 @@ export default function Home() {
   return (
     <div className="px-2 lg:px-6 xl:px-10 w-screen h-full flex flex-col items-center overflow-hidden">
       <div className="grid grid-cols-12 lg:h-full space-y-10">
-        <div className="col-span-full lg:col-span-7 3xl:col-span-8 h-fit lg:h-full flex flex-col justify-center">
+        <div className="mt-6 lg:mt-0 col-span-full lg:col-span-7 3xl:col-span-8 h-fit lg:h-full flex flex-col justify-center">
           <div className="w-full text-center lg:text-left">
             <StaggeredText
               text="Welcome To"
