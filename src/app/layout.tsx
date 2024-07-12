@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
-import { Inter, IBM_Plex_Mono } from "next/font/google";
+import { IBM_Plex_Mono } from "next/font/google";
 import "./globals.css";
 import ModalProvider from "@/providers/modal";
 import AppBar from "@/components/global/app-bar";
 import Terminal from "@/components/terminal";
+import { Toaster } from "@/components/ui/sonner";
 
-const inter = Inter({ subsets: ["latin"] });
 const ibmPlexMono = IBM_Plex_Mono({
   weight: ["300", "500", "700"],
   subsets: ["latin"],
@@ -31,6 +31,7 @@ export default function RootLayout({
             {children}
           </div>
           <Terminal />
+          <Toaster />
         </ModalProvider>
       </div>
       </body>
