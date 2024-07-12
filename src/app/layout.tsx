@@ -5,6 +5,7 @@ import ModalProvider from "@/providers/modal";
 import AppBar from "@/components/global/app-bar";
 import Terminal from "@/components/terminal";
 import { Toaster } from "@/components/ui/sonner";
+import { ThemeProvider } from "next-themes";
 
 const ibmPlexMono = IBM_Plex_Mono({
   weight: ["300", "500", "700"],
@@ -22,18 +23,25 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body className={ibmPlexMono.className}>
-      <div className="w-full h-full flex flex-col justify-center items-center">
-        <ModalProvider>
-          <AppBar />
-          <div className="py-20 min-h-full lg:h-screen max-w-[1440]">
-            {children}
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <div className="w-full h-full flex flex-col justify-center items-center">
+            <ModalProvider>
+              <AppBar />
+              <div className="py-20 min-h-full lg:h-screen max-w-[1440]">
+                {children}
+              </div>
+              <Terminal />
+              <Toaster theme="dark" />
+            </ModalProvider>
           </div>
-          <Terminal />
-          <Toaster />
-        </ModalProvider>
-      </div>
+        </ThemeProvider>
       </body>
     </html>
   );
