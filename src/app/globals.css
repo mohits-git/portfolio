@@ -7,7 +7,7 @@ body {
 }
 
 .mohit-khatri, .mohit-khatri-hollow {
-  @apply text-center lg:text-left text-[3rem] md:text-[6rem] lg:text-[5rem] xl:text-[6rem] 3xl:text-[9rem] leading-[4rem] md:leading-[5.75rem] lg:leading-[6.25rem] xl:leading-[7rem] 3xl:leading-[9.75rem] font-[900] p-0 m-0;
+  @apply text-center lg:text-left text-[3rem] md:text-[6rem] lg:text-[5rem] xl:text-[6rem] leading-[4rem] md:leading-[5.75rem] lg:leading-[6.25rem] xl:leading-[7rem] font-[900] p-0 m-0;
 }
 
 .mohit-khatri-hollow {

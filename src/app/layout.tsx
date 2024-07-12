@@ -24,13 +24,15 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={ibmPlexMono.className}>
+      <div className="w-full h-full flex flex-col justify-center items-center">
         <ModalProvider>
           <AppBar />
-          <div className="py-20 min-h-screen lg:h-screen">
+          <div className="py-20 min-h-full lg:h-screen max-w-[1440]">
             {children}
           </div>
           <Terminal />
         </ModalProvider>
+      </div>
       </body>
     </html>
   );
