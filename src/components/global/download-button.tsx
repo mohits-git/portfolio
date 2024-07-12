@@ -11,6 +11,7 @@ export const DownloadButton = () => {
   }
   return (
     <button
+      title="Download Resume"
       onClick={handleDownload}
       className="hover:text-gray-200 flex items-center bg-transparent border-none focus:outline-none">
       [<Download width={18} height={18} />]
