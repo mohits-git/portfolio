@@ -39,7 +39,7 @@ const SocialLinks: React.FC<Props> = ({ className = "" }) => {
         }}
         transition={{
           staggerChildren: 0.1,
-          duration: 0.15,
+          duration: 0.25,
         }}
         className={cn(`flex justify-center items-center space-x-3`, className)}>
         <motion.div
