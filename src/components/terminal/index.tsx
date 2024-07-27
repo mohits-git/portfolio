@@ -5,43 +5,84 @@ import commandProcessor from "./command-processor";
 import { cn } from "@/lib/utils";
 import { usePathname, useRouter } from "next/navigation";
 
-type Props = {
-
-}
-
 export type CommandsHistoryType = {
   cmd: string;
   response?: string;
   error?: boolean;
 }[];
 
-const Terminal: React.FC<Props> = () => {
+const Terminal: React.FC = () => {
+  const [active, setActive] = useState<boolean>(false);
   const [command, setCommand] = useState<string>('');
   const [commandsHistory, setCommandsHistory] = useState<CommandsHistoryType>([]);
+
   const commandInputRef = useRef<HTMLInputElement>(null);
   const terminalEndRef = useRef<HTMLDivElement>(null);
+  const terminalRef = useRef<HTMLDivElement>(null);
+
   const pathname = usePathname();
   const navigate = useRouter();
+
   const handleCommand = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     commandProcessor(command, setCommandsHistory, pathname, navigate);
     setCommand('');
   }
 
+  const handleFocus = () => {
+    commandInputRef.current?.focus();
+    setActive(true);
+  }
+
+  const scrollToView = () => {
+    terminalEndRef?.current?.scrollIntoView({
+      behavior: 'instant', block: 'end'
+    });
+  }
+
   useEffect(() => {
-    terminalEndRef.current?.scrollIntoView({ behavior: 'instant', block: 'end' })
-  }, [commandsHistory])
+    const timeoutId = setTimeout(scrollToView, 350);
+    scrollToView();
+    return () => clearTimeout(timeoutId);
+  }, [commandsHistory, active])
+
+  useEffect(() => {
+    let controlKeyPressed = false;
+    const handleEscKeyClick = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        setActive(false);
+      } else if (e.key === "Control") {
+        controlKeyPressed = true;
+        return;
+      } else if (e.key === "l" && controlKeyPressed) {
+        setCommandsHistory([]);
+      }
+      controlKeyPressed = false;
+    }
+
+    const handleOutsideClick = (e: MouseEvent) => {
+      // @ts-ignore
+      if (terminalRef?.current && !terminalRef.current.contains(e.target)) {
+        setActive(false);
+      }
+    }
+    document.addEventListener('keydown', handleEscKeyClick);
+    document.addEventListener('click', handleOutsideClick);
+    return () => {
+      document.removeEventListener('keydown', handleEscKeyClick);
+      document.removeEventListener('click', handleOutsideClick);
+    }
+  }, []);
 
   return (
     <div className="fixed bottom-2 left-0 w-full flex justify-center z-10">
       <div
         className={cn("mx-2 relative min-h-[65px] overflow-y-scroll scroll-bar max-w-5xl w-full py-2 px-1 md:px-2 flex flex-col space-y-1 border rounded-md underline-offset-4 decoration-gray-300 bg-black", {
-            'max-h-[100px]': true,
-            'max-h-[500px]': false
-          })}
-        onClick={() => {
-          commandInputRef.current?.focus();
-        }}
+          'max-h-[100px]': !active,
+          'max-h-[500px]': active
+        })}
+        onClick={handleFocus}
+        ref={terminalRef}
       >
         <div className="absolute top-2 right-2">
           <SquareTerminal width={30} height={30} />
@@ -59,7 +100,7 @@ const Terminal: React.FC<Props> = () => {
               key={index}
               className="flex flex-col"
             >
-              <p
+              <div
                 className="text-gray-200 text-wrap flex items-center overflow-hidden"
               >
                 <ChevronRight width={20} height={20} />
@@ -74,7 +115,7 @@ const Terminal: React.FC<Props> = () => {
                     >{word}{" "}</span>
                   ))}
                 </pre>
-              </p>
+              </div>
               {cmd.response && (
                 <p
                   className="text-gray-300 text-wrap flex items-center overflow-hidden"
