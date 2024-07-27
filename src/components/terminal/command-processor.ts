@@ -14,6 +14,15 @@ const commandProcessor = (
   const cmd = input[0];
   const args = input.slice(1);
   switch (cmd) {
+    case "help":
+      setCommandsHistory((prevHistory) => [
+        ...prevHistory,
+        {
+          cmd: command,
+          response: help
+        }
+      ]);
+      break;
     case "clear":
       setCommandsHistory([]);
       break;
@@ -53,3 +62,14 @@ const commandProcessor = (
 }
 
 export default commandProcessor;
+
+
+const help = `  # Commands:-
+  clear               Clear Terminal
+  pwd                 Print working directory (current page)
+  cd                  To navigate between pages
+
+  # KeyBoard Shortcuts:-
+  control-L           Clear Terminal
+  esc                 Minimize Terminal
+`

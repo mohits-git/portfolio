@@ -89,7 +89,7 @@ const Terminal: React.FC = () => {
         </div>
 
         <p className="text-gray-500 px-0.5 text-xs md:text-sm lg:text-base">
-          run &apos;help&apos; to get information about the commands
+          run &apos;help&apos; to get more information (press {" 'esc' "} to minimize)
         </p>
 
         <div
@@ -117,11 +117,13 @@ const Terminal: React.FC = () => {
                 </pre>
               </div>
               {cmd.response && (
-                <p
+                <div
                   className="text-gray-300 text-wrap flex items-center overflow-hidden"
                 >
-                  {cmd.response}
-                </p>
+                  <pre>
+                    {cmd.response}
+                  </pre>
+                </div>
               )}
             </div>
           ))}
