@@ -1,22 +1,30 @@
 'use client';
 import { ChevronRight, SquareTerminal } from "lucide-react";
 import React, { FormEvent, useEffect, useRef, useState } from "react";
+import commandProcessor from "./command-processor";
+import { cn } from "@/lib/utils";
+import { usePathname, useRouter } from "next/navigation";
 
 type Props = {
 
 }
 
+export type CommandsHistoryType = {
+  cmd: string;
+  response?: string;
+  error?: boolean;
+}[];
+
 const Terminal: React.FC<Props> = () => {
   const [command, setCommand] = useState<string>('');
-  const [commandsHistory, setCommandsHistory] = useState<{ cmd: string; response?: string; }[]>([]);
+  const [commandsHistory, setCommandsHistory] = useState<CommandsHistoryType>([]);
   const commandInputRef = useRef<HTMLInputElement>(null);
   const terminalEndRef = useRef<HTMLDivElement>(null);
+  const pathname = usePathname();
+  const navigate = useRouter();
   const handleCommand = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setCommandsHistory([
-      ...commandsHistory,
-      { cmd: command, response: "Thank you for ordering" }
-    ]);
+    commandProcessor(command, setCommandsHistory, pathname, navigate);
     setCommand('');
   }
 
@@ -27,7 +35,10 @@ const Terminal: React.FC<Props> = () => {
   return (
     <div className="fixed bottom-2 left-0 w-full flex justify-center z-10">
       <div
-        className="mx-2 relative min-h-[65px] max-w-5xl w-full py-2 px-1 md:px-2 flex flex-col space-y-1 border rounded-md underline-offset-4 decoration-gray-300 bg-black"
+        className={cn("mx-2 relative min-h-[65px] overflow-y-scroll scroll-bar max-w-5xl w-full py-2 px-1 md:px-2 flex flex-col space-y-1 border rounded-md underline-offset-4 decoration-gray-300 bg-black", {
+            'max-h-[100px]': true,
+            'max-h-[500px]': false
+          })}
         onClick={() => {
           commandInputRef.current?.focus();
         }}
@@ -41,7 +52,7 @@ const Terminal: React.FC<Props> = () => {
         </p>
 
         <div
-          className="overflow-y-scroll max-h-[500px] scroll-bar"
+          className=""
         >
           {commandsHistory.map((cmd, index) => (
             <div
@@ -52,7 +63,17 @@ const Terminal: React.FC<Props> = () => {
                 className="text-gray-200 text-wrap flex items-center overflow-hidden"
               >
                 <ChevronRight width={20} height={20} />
-                <span>{cmd.cmd}</span>
+                <pre>
+                  {cmd.cmd.split(' ').map((word, index) => (
+                    <span
+                      key={index}
+                      className={cn({
+                        "text-red-400": index === 0 && cmd.error,
+                        "text-green-400": index === 0 && !cmd.error
+                      })}
+                    >{word}{" "}</span>
+                  ))}
+                </pre>
               </p>
               {cmd.response && (
                 <p
