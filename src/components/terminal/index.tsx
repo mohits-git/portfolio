@@ -157,10 +157,11 @@ const Terminal: React.FC = () => {
             >
               <pre className="text-wrap">
                 {command}
+                <span className="h-[1.2rem] my-auto bg-white animate-cursor">
+                  {" "}
+                </span>
               </pre>
             </div>
-            <span className="w-[7px] h-[1.2rem] my-auto bg-white animate-cursor">
-            </span>
           </div>
           <div ref={terminalEndRef} />
         </div>
