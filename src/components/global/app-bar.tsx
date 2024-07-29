@@ -7,7 +7,7 @@ import { PAGES } from "@/constants/pages-links";
 
 const AppBar: React.FC = () => {
   return (
-    <div className="fixed top-2 left-0 w-full flex justify-center z-10">
+    <div className="fixed top-2 left-0 w-full flex justify-center z-[999]">
       <div className="mx-2 max-w-6xl w-full py-3 px-3 md:px-6 flex justify-between items-center border rounded-md underline-offset-4 decoration-gray-300 bg-black">
         <Link
           href={'/'}
