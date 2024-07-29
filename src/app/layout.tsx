@@ -31,7 +31,7 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <div className="w-full h-full flex flex-col justify-center items-center">
+          <div className="w-full h-full flex flex-col justify-center items-center scroll-bar">
             <ModalProvider>
               <AppBar />
               <div className="py-20 min-h-full lg:h-screen max-w-[1440]">
