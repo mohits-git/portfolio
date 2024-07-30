@@ -78,7 +78,7 @@ const Terminal: React.FC = () => {
     <div className="fixed bottom-2 left-0 w-full flex justify-center z-[999]">
       <div
         className={cn("mx-2 relative min-h-[65px] overflow-y-scroll scroll-bar max-w-6xl w-full py-2 px-1 md:px-2 flex flex-col space-y-1 border rounded-md underline-offset-4 decoration-gray-300 bg-black", {
-          'max-h-[100px]': !active,
+          'max-h-[85px]': !active,
           'max-h-[500px]': active
         })}
         onClick={handleFocus}
@@ -163,8 +163,8 @@ const Terminal: React.FC = () => {
               </pre>
             </div>
           </div>
-          <div ref={terminalEndRef} />
         </div>
+        <div ref={terminalEndRef} />
       </div>
     </div >
   )
