@@ -34,7 +34,7 @@ export default function RootLayout({
           <div className="w-full h-full flex flex-col justify-center items-center scroll-bar">
             <ModalProvider>
               <AppBar />
-              <div className="py-20 min-h-full lg:h-screen max-w-[1440]">
+              <div className="py-20 min-h-full h-full max-w-[1440]">
                 {children}
               </div>
               <Terminal />

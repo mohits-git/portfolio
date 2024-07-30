@@ -21,7 +21,7 @@ const ProjectCard: React.FC<Props> = ({ name, command, description, previewUrl }
           fill
           className="object-cover absolute z-0"
         />
-        <div className="absolute w-full h-full top-0 left-0 transition duration-300 group-hover/card:bg-black opacity-60 bg-gradient-to-t from-black/60 to-black/20" />
+        <div className="absolute w-full h-full top-0 left-0 transition duration-300 group-hover/card:bg-black opacity-60 bg-gradient-to-t from-black/90 to-black/20" />
         <div className="flex flex-row items-center space-x-4 z-10">
         </div>
         <div className="text content">
