@@ -1,6 +1,7 @@
 import { AppRouterInstance } from "next/dist/shared/lib/app-router-context.shared-runtime";
 import React from "react";
 import { CommandsHistoryType } from ".";
+import { COMMANDS, PROJECTS } from "@/constants/projects";
 
 const commandProcessor = (
   command: string,
@@ -49,6 +50,23 @@ const commandProcessor = (
         { cmd: command }
       ]);
       break;
+    case COMMANDS.includes(command) ? cmd : "break":
+      if (cmd !== "break") {
+        const project = PROJECTS.find((project) => project.command === command);
+        if(!project) return;
+        setCommandsHistory((prevHistory) => [
+          ...prevHistory,
+          {
+            cmd: command,
+            response: `Opening ${project.name}...`,
+            error: false
+          }
+        ]);
+        setTimeout(() => {
+          window.open(project?.link || project.github, "_blank");
+        }, 1500);
+        break;
+      }
     default:
       setCommandsHistory((prevHistory) => [
         ...prevHistory,
