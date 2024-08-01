@@ -25,8 +25,14 @@ const Terminal: React.FC = () => {
 
   const handleCommand = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    commandProcessor(command, setCommandsHistory, pathname, navigate);
     setCommand('');
+    commandProcessor(
+      command,
+      setCommand,
+      setCommandsHistory,
+      pathname,
+      navigate
+    );
   }
 
   const handleFocus = () => {

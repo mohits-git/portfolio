@@ -3,7 +3,7 @@ import SocialLinks from "@/components/global/social-links";
 import { PROJECTS } from "@/constants/projects";
 import React from "react";
 
-const Page: React.FC<Props> = () => {
+const Page: React.FC = () => {
   return (
     <div className="px-4 py-3 lg:pb-8 w-full h-full min-h-[calc(100vh-10vh)] flex flex-col overflow-scroll invisible-scrollbar">
       <h1 className="text-3xl">

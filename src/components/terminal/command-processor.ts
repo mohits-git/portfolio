@@ -5,6 +5,7 @@ import { COMMANDS, PROJECTS } from "@/constants/projects";
 
 const commandProcessor = (
   command: string,
+  setCommand: React.Dispatch<React.SetStateAction<string>>,
   setCommandsHistory: React.Dispatch<
     React.SetStateAction<CommandsHistoryType>
   >,
@@ -53,7 +54,7 @@ const commandProcessor = (
     case COMMANDS.includes(command) ? cmd : "break":
       if (cmd !== "break") {
         const project = PROJECTS.find((project) => project.command === command);
-        if(!project) return;
+        if (!project) return;
         setCommandsHistory((prevHistory) => [
           ...prevHistory,
           {
@@ -64,7 +65,8 @@ const commandProcessor = (
         ]);
         setTimeout(() => {
           window.open(project?.link || project.github, "_blank");
-        }, 1500);
+        }, 1800);
+        printLoadingAnimation(setCommand, setCommandsHistory);
         break;
       }
     default:
@@ -91,3 +93,34 @@ const help = `  # Commands:-
   control-L           Clear Terminal
   esc                 Minimize Terminal
 `
+
+
+const printLoadingAnimation = (
+  setCommand: React.Dispatch<React.SetStateAction<string>>,
+  setCommandsHistory: React.Dispatch<React.SetStateAction<CommandsHistoryType>>,
+  count = 0
+) => {
+  setCommand((prev) => {
+    if (count === 0) return "=====>";
+    else {
+      let str = "=====" + prev.split(" ")[0];
+      for (let i = count; i < 10; i++) {
+        str += "     ";
+      }
+      return `${str}          ${count * 10}%`;
+    }
+  });
+  if (count < 10)
+    setTimeout(() => {
+      printLoadingAnimation(setCommand, setCommandsHistory, count + 1);
+    }, 150);
+  else {
+    setCommandsHistory((prevHistory) => {
+      const lastCommand = prevHistory[prevHistory.length - 1];
+      lastCommand.response = `Opening project...
+  =======================================================>          100%`;
+      return [...prevHistory];
+    });
+    setCommand("");
+  }
+}
