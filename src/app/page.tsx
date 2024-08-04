@@ -46,7 +46,7 @@ export default function Home() {
             Mohit&apos;s Site
           </motion.div>
         </div>
-        <div className="col-span-full lg:col-span-5 flex flex-col lg:items-center justify-center h-full w-full pb-8">
+        <div className="col-span-full lg:col-span-5 flex flex-col lg:items-center justify-center h-full w-full pb-16 sm:pb-8">
           <h4 className="text-2xl lg:text-xl font-semibold w-full leading-6">
             Hi!
           </h4>

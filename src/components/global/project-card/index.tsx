@@ -29,9 +29,9 @@ const ProjectCard: React.FC<Props> = ({ name, command, description, previewUrl, 
           <div className="flex flex-row items-center space-x-4 z-10">
           </div>
           <div className="text content">
-            <h2 className="font-bold text-xl md:text-2xl text-gray-50 relative z-10 flex items-center">
+            <h2 className="font-bold text-lg sm:text-xl md:text-2xl text-gray-50 relative z-10 flex items-center">
               {name}
-              <code className="ml-3 px-2 py-0.5 text-xs text-slate-200 bg-white/40 rounded-lg">
+              <code className="ml-3 px-2 py-0.5 text-[0.65rem] leading-4 sm:text-xs text-slate-200 bg-white/40 rounded-lg">
                 {command}
               </code>
               {link && (

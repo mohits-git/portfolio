@@ -2,8 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
+html,
 body {
-  @apply bg-black text-white
+  @apply bg-black text-white h-full;
 }
 
 .mohit-khatri, .mohit-khatri-hollow {

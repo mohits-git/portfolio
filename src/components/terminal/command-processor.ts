@@ -41,7 +41,7 @@ const commandProcessor = (
       let page = args[0]?.split('/')?.pop()
       if (args[0] === '/') page = "/"
       if (page !== undefined) {
-        if (page === "~") page = "/";
+        if (page === "~" || page === "home") page = "/";
         navigate.push(`/${page}`);
       } else {
         navigate.push(`/`);
