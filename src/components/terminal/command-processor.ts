@@ -59,7 +59,6 @@ const commandProcessor = (
           ...prevHistory,
           {
             cmd: command,
-            response: `Opening ${project.name}...`,
             error: false
           }
         ]);
@@ -101,13 +100,13 @@ const printLoadingAnimation = (
   count = 0
 ) => {
   setCommand((prev) => {
-    if (count === 0) return "=====>";
+    if (count === 0) return "Opening project... [ >                                            ]        10%";
     else {
-      let str = "=====" + prev.split(" ")[0];
+      let str = prev.split(">")[0] + "====>";
       for (let i = count; i < 10; i++) {
-        str += "     ";
+        str += "    ";
       }
-      return `${str}          ${count * 10}%`;
+      return `${str}  ]        ${(count) * 10}%  `;
     }
   });
   if (count < 10)
@@ -117,8 +116,7 @@ const printLoadingAnimation = (
   else {
     setCommandsHistory((prevHistory) => {
       const lastCommand = prevHistory[prevHistory.length - 1];
-      lastCommand.response = `Opening project...
-  =======================================================>          100%`;
+      lastCommand.response = `  Opening project... [ =========================================> ]        100%`;
       return [...prevHistory];
     });
     setCommand("");
