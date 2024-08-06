@@ -16,6 +16,15 @@ const commandProcessor = (
   const cmd = input[0];
   const args = input.slice(1);
   switch (cmd) {
+    case "":
+      setCommandsHistory((prevHistory) => [
+        ...prevHistory,
+        {
+          cmd: "",
+        }
+      ]);
+      break;
+      break;
     case "help":
       setCommandsHistory((prevHistory) => [
         ...prevHistory,
@@ -36,6 +45,15 @@ const commandProcessor = (
           response: `/home/mohitssite${pathname}`
         }
       ])
+      break;
+    case "ls":
+      setCommandsHistory((prevHistory) => [
+        ...prevHistory,
+        {
+          cmd: command,
+          response: `.    ..    about    projects    experience    contact`
+        }
+      ]);
       break;
     case "cd":
       let page = args[0]?.split('/')?.pop()
@@ -77,6 +95,7 @@ const commandProcessor = (
           error: true
         }
       ]);
+      break;
   }
 }
 

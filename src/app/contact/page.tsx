@@ -6,9 +6,9 @@ type Props = {
 
 const Page: React.FC<Props> = () => {
     return (
-        <>
-            Page
-        </>
+      <div>
+        Contact Me
+      </div>
     )
 }
 

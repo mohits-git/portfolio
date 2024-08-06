@@ -35,6 +35,6 @@ export const PAGES = [
     href: "/contact",
     text: "Contact Me",
     icon: Mail,
-    cmd: "cd /home/mohitssite/projects"
+    cmd: "cd /home/mohitssite/contact"
   },
 ] as const;
